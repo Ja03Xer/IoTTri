@@ -1,0 +1,86 @@
+C:\Users\sakis\PycharmProjects\CTIP_LLM_Project\.venv\Scripts\python.exe C:\Users\sakis\PycharmProjects\iottri\iottri\examples\efficiency_qualitative_analysis.py 
+Running 24 test cases...
+
+Running case: c1 (web_recon)
+Running case: c2 (web_recon)
+Running case: c3 (web_recon)
+Running case: c4 (web_recon)
+Running case: c5 (web_recon)
+Running case: c6 (web_recon)
+Running case: c7 (web_validation)
+Running case: c8 (web_validation)
+Running case: c9 (web_validation)
+Running case: c10 (web_validation)
+Running case: c11 (web_validation)
+Running case: c12 (web_validation)
+Running case: c13 (mqtt)
+Running case: c14 (mqtt)
+Running case: c15 (mqtt)
+Running case: c16 (mqtt)
+Running case: c17 (mqtt)
+Running case: c18 (mqtt)
+Running case: c19 (ble)
+Running case: c20 (ble)
+Running case: c21 (ble)
+Running case: c22 (firmware)
+Running case: c23 (firmware)
+Running case: c24 (firmware)
+
+===== SUMMARY (JSON) =====
+
+{
+  "IoTTri": {
+    "Accuracy": 4.29,
+    "Clarity": 5,
+    "Completeness": 3.29,
+    "Ethics": 5,
+    "AvgLengthChars": 461.58,
+    "AvgLengthWords": 62.67
+  },
+  "SingleLLMBaseline": {
+    "Accuracy": 3.33,
+    "Clarity": 4.33,
+    "Completeness": 2.5,
+    "Ethics": 5,
+    "AvgLengthChars": 478.08,
+    "AvgLengthWords": 64.42
+  }
+}
+
+===== PAPER-READY SUMMARY TABLE =====
+
+| System | Accuracy ↑ | Clarity ↑ | Completeness ↑ | Ethics ↑ |
+|---|---:|---:|---:|---:|
+| IoTTri | 4.29 | 5.00 | 3.29 | 5.00 |
+| Single-LLM Baseline | 3.33 | 4.33 | 2.50 | 5.00 |
+
+===== EFFICIENCY SUMMARY =====
+
+| System | Avg Response Length (chars) ↓ | Avg Response Length (words) ↓ |
+|---|---:|---:|
+| IoTTri | 461.58 | 62.67 |
+| Single-LLM Baseline | 478.08 | 64.42 |
+
+===== QUALITATIVE EXAMPLE =====
+
+Case ID: c21
+Group: ble
+Query: How should I justify the local attacker model and its impact?
+Expected focus: justify local proximity attacker model and realistic impact
+IoTTri scores -> Accuracy: 4, Completeness: 3
+Baseline scores -> Accuracy: 1, Completeness: 1
+
+--- IoTTri Response ---
+
+Justify the local attacker model by emphasizing that BLE devices often operate in open, physical spaces where nearby unauthorized parties can attempt connections without physical barriers. Explain that this proximity enables attackers to exploit weak or absent pairing protections to access sensitive data or device functions.
+
+BLE pairing inherently assumes devices are within short range, but this also means attackers physically close can attempt unauthorized access if pairing lacks strong verification or encryption. Highlighting this realistic threat reinforces the need for robust pairing and authentication to prevent data exposure or control by nearby adversaries.
+
+--- Baseline Response ---
+
+Justify the local attacker model by highlighting that BLE devices often assume physical proximity implies trust, enabling pairing without robust authentication. This assumption allows an attacker nearby—within typical BLE range—to intercept or interact with the device, leading to unauthorized data access or control. Emphasize that in wearable devices, which frequently expose sensitive personal data, this risk is significant. Therefore, the impact includes potential privacy breaches and device misuse, underscoring the need for stronger pairing mechanisms that verify trust beyond mere proximity.
+
+Saved JSON: C:\Users\sakis\PycharmProjects\iottri\iottri\examples\logs\effectiveness_vs_baseline_results.json
+Saved CSV : C:\Users\sakis\PycharmProjects\iottri\iottri\examples\logs\effectiveness_vs_baseline_results.csv
+
+Process finished with exit code 0

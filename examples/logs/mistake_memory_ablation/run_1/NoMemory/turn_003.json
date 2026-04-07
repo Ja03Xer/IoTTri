@@ -1,0 +1,536 @@
+{
+  "timestamp_utc": "2026-04-05T07:13:51.042491Z",
+  "task_descriptor": {
+    "task_id": "lab-web-001",
+    "scenario_identifier": "smart-camera web-interface misconfiguration",
+    "device_type": "smart_camera",
+    "scenario_summary": "Authorised IoT pentesting lab focused on weak authentication, unencrypted transport, and exposed web administration.",
+    "exposed_protocols_interfaces": [
+      "HTTP",
+      "MQTT"
+    ],
+    "allowed_tool_categories": [
+      "network scanner",
+      "HTTP client"
+    ],
+    "learning_objectives": [
+      {
+        "bloom_level": "Apply",
+        "objective": "Identify insecure configuration"
+      },
+      {
+        "bloom_level": "Analyze",
+        "objective": "Reason about trust boundaries"
+      },
+      {
+        "bloom_level": "Evaluate",
+        "objective": "Justify remediation"
+      }
+    ],
+    "ground_truth_artifacts": [
+      {
+        "name": "weak_auth",
+        "evidence_type": "evidence",
+        "description": "Weak or default credentials accepted"
+      },
+      {
+        "name": "no_https",
+        "evidence_type": "evidence",
+        "description": "Administrative interface uses unencrypted HTTP"
+      }
+    ],
+    "active_attack_surfaces": [
+      "device_web_interface",
+      "local_network_services"
+    ],
+    "laboratory_scope": "Authorised sandbox only",
+    "authorised_only": true
+  },
+  "learner_state_before": {
+    "turn_index": 3,
+    "phase": "reconnaissance",
+    "hint_level": 1,
+    "recent_action_summary": "The device exposes a login form and uses plain HTTP rather than HTTPS.",
+    "confidence_indicators": [],
+    "evidence_markers": [
+      "http login page observed"
+    ],
+    "progress_markers": [
+      "transport issue noticed"
+    ],
+    "retrieved_mistakes": []
+  },
+  "learner_state_after": {
+    "turn_index": 3,
+    "phase": "reconnaissance",
+    "hint_level": 1,
+    "recent_action_summary": "The device exposes a login form and uses plain HTTP rather than HTTPS.",
+    "confidence_indicators": [],
+    "evidence_markers": [
+      "http login page observed"
+    ],
+    "progress_markers": [
+      "transport issue noticed"
+    ],
+    "retrieved_mistakes": []
+  },
+  "learner_query": "Why is the transport choice important before I make any security conclusion?",
+  "execution_log": "",
+  "moderation_result": {
+    "categories": {
+      "harassment": false,
+      "harassment_threatening": false,
+      "hate": false,
+      "hate_threatening": false,
+      "illicit": false,
+      "illicit_violent": false,
+      "self_harm": false,
+      "self_harm_instructions": false,
+      "self_harm_intent": false,
+      "sexual": false,
+      "sexual_minors": false,
+      "violence": false,
+      "violence_graphic": false,
+      "harassment/threatening": false,
+      "hate/threatening": false,
+      "illicit/violent": false,
+      "self-harm/intent": false,
+      "self-harm/instructions": false,
+      "self-harm": false,
+      "sexual/minors": false,
+      "violence/graphic": false
+    },
+    "category_applied_input_types": {
+      "harassment": [
+        "text"
+      ],
+      "harassment_threatening": [
+        "text"
+      ],
+      "hate": [
+        "text"
+      ],
+      "hate_threatening": [
+        "text"
+      ],
+      "illicit": [
+        "text"
+      ],
+      "illicit_violent": [
+        "text"
+      ],
+      "self_harm": [
+        "text"
+      ],
+      "self_harm_instructions": [
+        "text"
+      ],
+      "self_harm_intent": [
+        "text"
+      ],
+      "sexual": [
+        "text"
+      ],
+      "sexual_minors": [
+        "text"
+      ],
+      "violence": [
+        "text"
+      ],
+      "violence_graphic": [
+        "text"
+      ],
+      "harassment/threatening": [
+        "text"
+      ],
+      "hate/threatening": [
+        "text"
+      ],
+      "illicit/violent": [
+        "text"
+      ],
+      "self-harm/intent": [
+        "text"
+      ],
+      "self-harm/instructions": [
+        "text"
+      ],
+      "self-harm": [
+        "text"
+      ],
+      "sexual/minors": [
+        "text"
+      ],
+      "violence/graphic": [
+        "text"
+      ]
+    },
+    "category_scores": {
+      "harassment": 2.355261854303796e-06,
+      "harassment_threatening": 8.398072034951531e-07,
+      "hate": 3.373722476473661e-06,
+      "hate_threatening": 8.851569304133282e-08,
+      "illicit": 4.272078909473254e-05,
+      "illicit_violent": 3.740956047302422e-05,
+      "self_harm": 1.8925148246037342e-06,
+      "self_harm_instructions": 9.223470110117277e-07,
+      "self_harm_intent": 1.3846004563753396e-06,
+      "sexual": 1.0129990980873922e-06,
+      "sexual_minors": 2.72647027069593e-07,
+      "violence": 2.840974294610978e-06,
+      "violence_graphic": 7.183260399857925e-07,
+      "harassment/threatening": 8.398072034951531e-07,
+      "hate/threatening": 8.851569304133282e-08,
+      "illicit/violent": 3.740956047302422e-05,
+      "self-harm/intent": 1.3846004563753396e-06,
+      "self-harm/instructions": 9.223470110117277e-07,
+      "self-harm": 1.8925148246037342e-06,
+      "sexual/minors": 2.72647027069593e-07,
+      "violence/graphic": 7.183260399857925e-07
+    },
+    "flagged": false
+  },
+  "scope_result": {
+    "allow": true,
+    "reason": "",
+    "risk_markers": {
+      "real_world_targeting": false,
+      "payload_request": false,
+      "step_by_step_request": false
+    }
+  },
+  "retrieved_context": [
+    {
+      "snippet_id": "kb-003",
+      "attack_surface": "device_web_interface",
+      "title": "Transport security implications",
+      "text": "If the web interface uses unencrypted HTTP, credentials and session tokens may be exposed to local attackers. This directly weakens trust boundaries between user and device.",
+      "source": "enhanced",
+      "score": 0.8447827805735133
+    },
+    {
+      "snippet_id": "kb-006",
+      "attack_surface": "device_web_interface",
+      "title": "Trust boundary analysis for web UI",
+      "text": "A device web interface represents a trust boundary between user and system. Weak authentication or unencrypted communication reduces this boundary and increases exposure risk.",
+      "source": "enhanced",
+      "score": 0.8356137687436194
+    },
+    {
+      "snippet_id": "kb-009",
+      "attack_surface": "local_network_services",
+      "title": "Trust boundary in local network",
+      "text": "Local network exposure should not be assumed safe. Devices must enforce proper authentication even within internal networks.",
+      "source": "enhanced",
+      "score": 0.714174762340571
+    },
+    {
+      "snippet_id": "kb-004",
+      "attack_surface": "device_web_interface",
+      "title": "Configuration exposure reasoning",
+      "text": "Administrative interfaces should be restricted and protected. If configuration endpoints are accessible without strong controls, this increases risk of unauthorized modification.",
+      "source": "enhanced",
+      "score": 0.6805099199204002
+    }
+  ],
+  "retrieved_mistakes": [],
+  "interaction_history_used_by_evaluator": [
+    {
+      "turn_index": 1,
+      "learner_query": "What should I examine next in the authorised lab?",
+      "execution_log": "",
+      "retrieved_context": [
+        {
+          "snippet_id": "kb-006",
+          "attack_surface": "device_web_interface",
+          "title": "Trust boundary analysis for web UI",
+          "text": "A device web interface represents a trust boundary between user and system. Weak authentication or unencrypted communication reduces this boundary and increases exposure risk.",
+          "source": "enhanced",
+          "score": 0.7499936629272981
+        },
+        {
+          "snippet_id": "kb-003",
+          "attack_surface": "device_web_interface",
+          "title": "Transport security implications",
+          "text": "If the web interface uses unencrypted HTTP, credentials and session tokens may be exposed to local attackers. This directly weakens trust boundaries between user and device.",
+          "source": "enhanced",
+          "score": 0.7463693571065741
+        },
+        {
+          "snippet_id": "kb-009",
+          "attack_surface": "local_network_services",
+          "title": "Trust boundary in local network",
+          "text": "Local network exposure should not be assumed safe. Devices must enforce proper authentication even within internal networks.",
+          "source": "enhanced",
+          "score": 0.6723722140326296
+        },
+        {
+          "snippet_id": "kb-004",
+          "attack_surface": "device_web_interface",
+          "title": "Configuration exposure reasoning",
+          "text": "Administrative interfaces should be restricted and protected. If configuration endpoints are accessible without strong controls, this increases risk of unauthorized modification.",
+          "source": "enhanced",
+          "score": 0.6556265109430548
+        }
+      ],
+      "tutor_output": {
+        "hint": "Consider investigating whether the login page enforces strong authentication measures and if the communication channel protects credentials during transmission.",
+        "rationale": "The web interface acts as a trust boundary; weak authentication or unencrypted HTTP can expose credentials to interception or unauthorized access, increasing security risks.",
+        "check_question": "What observations would help you determine if the login mechanism is strong and if the credentials are transmitted securely?"
+      },
+      "assistant_output": {
+        "suggestion": "Examine whether the login page accepts weak or default credentials and verify if authentication is properly enforced.",
+        "explanation": "Weak authentication on the web interface directly undermines the trust boundary between the user and device, increasing risk of unauthorized access. Checking credential strength and enforcement helps identify insecure configuration.",
+        "safety_note": "Perform only low-impact tests within the authorised lab environment, avoiding disruptive or intrusive actions."
+      },
+      "evaluator_output": {
+        "learner_evaluation": {
+          "criteria": [
+            {
+              "criterion": "Accuracy",
+              "score": 3,
+              "comment": "The learner's question is appropriate for the reconnaissance phase, seeking guidance on next steps within the authorised lab context.",
+              "recommendation": "Encourage the learner to focus on examining authentication strength and transport security as suggested."
+            },
+            {
+              "criterion": "Clarity",
+              "score": 4,
+              "comment": "The learner's submission is clear and unambiguous in requesting direction for further examination.",
+              "recommendation": "Maintain clear and specific queries to facilitate targeted guidance."
+            },
+            {
+              "criterion": "Completeness",
+              "score": 3,
+              "comment": "The submission is brief and does not specify particular areas of interest, but this is reasonable given the early phase and request for guidance.",
+              "recommendation": "Prompt the learner to articulate specific observations or hypotheses as they progress."
+            },
+            {
+              "criterion": "Ethics",
+              "score": 5,
+              "comment": "The learner's request respects the authorised lab scope and does not seek out-of-scope or malicious actions.",
+              "recommendation": "Continue to reinforce adherence to authorised and ethical testing boundaries."
+            }
+          ],
+          "feedback_summary": "The learner appropriately requests guidance on next steps within the authorised lab environment, demonstrating a clear and ethical approach during reconnaissance. However, the submission is general and would benefit from more specific investigative focus as the exercise progresses.",
+          "improvement_guidance": "Encourage the learner to investigate authentication mechanisms and transport security in detail, reporting observations to build evidence for analysis. Prompt them to consider trust boundaries and potential vulnerabilities explicitly.",
+          "bloom_level": "Apply"
+        },
+        "system_evaluation": {
+          "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance aligned with the task objectives and learner phase. They emphasize examining authentication strength and transport security, which are key insecure configurations in this scenario.",
+          "reliability_comment": "The guidance is consistent with the ground truth artifacts and retrieved context, accurately reflecting the security risks of weak authentication and unencrypted HTTP.",
+          "policy_compliance_comment": "The guidance remains within the authorised educational scope, advising low-impact, safe actions within the lab environment without encouraging intrusive or out-of-scope activities.",
+          "safety_flags": {
+            "unsafe_specificity": false,
+            "hallucination_risk": false,
+            "out_of_scope_request": false,
+            "malicious_intent_signal": false
+          }
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "learner_query": "Which observations should I prioritise collecting next?",
+      "execution_log": "",
+      "retrieved_context": [
+        {
+          "snippet_id": "kb-006",
+          "attack_surface": "device_web_interface",
+          "title": "Trust boundary analysis for web UI",
+          "text": "A device web interface represents a trust boundary between user and system. Weak authentication or unencrypted communication reduces this boundary and increases exposure risk.",
+          "source": "enhanced",
+          "score": 0.7043343882616653
+        },
+        {
+          "snippet_id": "kb-003",
+          "attack_surface": "device_web_interface",
+          "title": "Transport security implications",
+          "text": "If the web interface uses unencrypted HTTP, credentials and session tokens may be exposed to local attackers. This directly weakens trust boundaries between user and device.",
+          "source": "enhanced",
+          "score": 0.7029783808137682
+        },
+        {
+          "snippet_id": "kb-010",
+          "attack_surface": "local_network_services",
+          "title": "MQTT broker authentication reasoning",
+          "text": "If an MQTT broker accepts unauthenticated connections on the local network, unauthorized entities may observe or influence device communications.",
+          "source": "enhanced",
+          "score": 0.6516549254416097
+        },
+        {
+          "snippet_id": "kb-004",
+          "attack_surface": "device_web_interface",
+          "title": "Configuration exposure reasoning",
+          "text": "Administrative interfaces should be restricted and protected. If configuration endpoints are accessible without strong controls, this increases risk of unauthorized modification.",
+          "source": "enhanced",
+          "score": 0.6492412264895554
+        }
+      ],
+      "tutor_output": {
+        "hint": "Focus first on the web admin page as it forms a critical trust boundary between the user and the device. Consider what aspects of authentication and transport security you can observe there before analyzing the MQTT service.",
+        "rationale": "The web interface is often the primary attack surface for device configuration and control. Assessing its authentication mechanisms and whether it uses encrypted transport helps understand how well the trust boundary is enforced, which is foundational before exploring other services like MQTT.",
+        "check_question": "What specific observations on the web admin page would help you evaluate whether authentication is strong and if communication is protected from interception?"
+      },
+      "assistant_output": {
+        "suggestion": "Prioritize collecting evidence on whether the web admin interface enforces strong authentication and uses encrypted transport, then assess MQTT service authentication requirements.",
+        "explanation": "These observations directly impact the trust boundary between user and device. Weak or absent authentication and unencrypted HTTP increase exposure risk and are key misconfigurations to identify in this scenario.",
+        "safety_note": "Conduct all tests within the authorised lab environment using non-disruptive checks to avoid affecting device operation or network stability."
+      },
+      "evaluator_output": {
+        "learner_evaluation": {
+          "criteria": [
+            {
+              "criterion": "Accuracy",
+              "score": 4,
+              "comment": "The learner's question is appropriate and relevant to the reconnaissance phase, seeking to prioritize observations in line with the scenario's focus on authentication and transport security.",
+              "recommendation": "Encourage the learner to focus on collecting specific evidence related to authentication strength and encryption on the web admin interface as the next step."
+            },
+            {
+              "criterion": "Clarity",
+              "score": 5,
+              "comment": "The learner's submission is clear, concise, and unambiguous in requesting guidance on prioritization of observations.",
+              "recommendation": "Maintain clear and direct queries to facilitate effective guidance and learning."
+            },
+            {
+              "criterion": "Completeness",
+              "score": 3,
+              "comment": "The submission is brief and does not specify particular observations, which is reasonable at this early stage but limits depth of analysis.",
+              "recommendation": "Prompt the learner to progressively specify and report detailed observations to build a comprehensive evidence base."
+            },
+            {
+              "criterion": "Ethics",
+              "score": 5,
+              "comment": "The learner's request respects the authorised lab scope and does not seek out-of-scope or unethical actions.",
+              "recommendation": "Continue to reinforce adherence to authorised and ethical testing boundaries."
+            }
+          ],
+          "feedback_summary": "The learner appropriately seeks guidance on prioritizing observations within the authorised lab environment, demonstrating clarity and ethical awareness. However, the submission is general and would benefit from more specific investigative focus as the exercise progresses.",
+          "improvement_guidance": "Encourage the learner to investigate authentication mechanisms and transport security on the web admin interface in detail, reporting findings to support analysis of trust boundaries and insecure configurations.",
+          "bloom_level": "Apply"
+        },
+        "system_evaluation": {
+          "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance aligned with the task objectives and learner phase. They emphasize examining authentication strength and transport security, which are key insecure configurations in this scenario.",
+          "reliability_comment": "The guidance is consistent with the ground truth artifacts and retrieved context, accurately reflecting the security risks of weak authentication and unencrypted HTTP.",
+          "policy_compliance_comment": "The guidance remains within the authorised educational scope, advising low-impact, safe actions within the lab environment without encouraging intrusive or out-of-scope activities.",
+          "safety_flags": {
+            "unsafe_specificity": false,
+            "hallucination_risk": false,
+            "out_of_scope_request": false,
+            "malicious_intent_signal": false
+          }
+        }
+      }
+    }
+  ],
+  "tutor_output": {
+    "hint": "Now that you've identified the use of unencrypted HTTP for the login page, consider investigating whether the device enforces strong authentication or if default or weak credentials might be accepted.",
+    "rationale": "Unencrypted transport exposes credentials to interception, but even more critical is whether authentication itself is robust. Weak or default credentials combined with unencrypted transport greatly increase risk by lowering the trust boundary between user and device.",
+    "check_question": "What evidence could you gather to determine if the device accepts default or weak credentials during login?"
+  },
+  "assistant_output": {
+    "suggestion": "Because unencrypted HTTP allows attackers on the local network to intercept credentials and session data, the transport choice directly affects the strength of the trust boundary between the user and the device.",
+    "explanation": "Using unencrypted HTTP means sensitive information like login credentials can be captured by eavesdropping, effectively weakening authentication and increasing the risk of unauthorized access. Verifying transport security is essential to accurately assess the device's security posture.",
+    "safety_note": "Always perform transport security checks using non-intrusive methods within the authorised lab environment and avoid exposing sensitive data beyond the test scope."
+  },
+  "evaluator_output": {
+    "learner_evaluation": {
+      "criteria": [
+        {
+          "criterion": "Accuracy",
+          "score": 4,
+          "comment": "The learner's question correctly focuses on understanding the importance of transport security before drawing security conclusions, aligning well with the reconnaissance phase and scenario context.",
+          "recommendation": "Encourage the learner to connect transport security implications with trust boundary concepts and to gather concrete evidence on authentication and encryption."
+        },
+        {
+          "criterion": "Clarity",
+          "score": 5,
+          "comment": "The learner's submission is clear and well-phrased, explicitly asking for the rationale behind the importance of transport choice in security assessment.",
+          "recommendation": "Maintain this level of clarity to facilitate precise and effective guidance."
+        },
+        {
+          "criterion": "Completeness",
+          "score": 3,
+          "comment": "The submission is a single, focused question without elaboration or evidence, which is reasonable at this stage but limits depth.",
+          "recommendation": "Prompt the learner to elaborate on their reasoning or hypotheses as they progress to deepen analysis."
+        },
+        {
+          "criterion": "Ethics",
+          "score": 5,
+          "comment": "The learner's question respects the authorised lab scope and does not seek out-of-scope or unethical actions.",
+          "recommendation": "Continue to reinforce adherence to authorised and ethical testing boundaries."
+        }
+      ],
+      "feedback_summary": "The learner demonstrates appropriate curiosity and understanding by questioning the significance of transport security in the assessment process, showing good alignment with learning objectives and ethical boundaries. However, the submission is brief and would benefit from more detailed reasoning or evidence reporting in subsequent steps.",
+      "improvement_guidance": "Encourage the learner to explicitly relate transport security to trust boundary weakening and to collect and report specific observations about authentication strength and encryption status. Prompt them to analyze how these factors impact overall device security.",
+      "bloom_level": "Analyze"
+    },
+    "system_evaluation": {
+      "guidance_quality_summary": "The tutor and assistant outputs provide clear, relevant, and actionable guidance that effectively explains the security implications of unencrypted HTTP transport and weak authentication, aligned with the scenario and learner phase.",
+      "reliability_comment": "The guidance is accurate and consistent with ground truth artifacts and retrieved context, correctly emphasizing the risks of unencrypted transport and weak authentication on trust boundaries.",
+      "policy_compliance_comment": "The guidance remains fully within the authorised educational scope, promoting safe, low-impact investigative actions without encouraging intrusive or out-of-scope activities.",
+      "safety_flags": {
+        "unsafe_specificity": false,
+        "hallucination_risk": false,
+        "out_of_scope_request": false,
+        "malicious_intent_signal": false
+      }
+    }
+  },
+  "config_snapshot": {
+    "safety": {
+      "laboratory_only": true,
+      "require_authorised_scope": true,
+      "prohibit_step_by_step_exploitation": true,
+      "require_evidence_verification_on_risk": true,
+      "allow_human_escalation": true,
+      "block_real_world_targeting": true,
+      "block_payload_generation": true,
+      "immutable": true
+    },
+    "retrieval": {
+      "embedding_model": "text-embedding-3-small",
+      "top_k": 4,
+      "max_top_k": 8,
+      "min_score": 0.2,
+      "attack_surface_strict_filter": true,
+      "objective_conditioning_weight": 0.2,
+      "enable_objective_conditioning": true
+    },
+    "modules": {
+      "model": "gpt-4.1-mini",
+      "tutor_temperature": 0.5,
+      "assistant_temperature": 0.7,
+      "evaluator_temperature": 0.0
+    },
+    "adaptation": {
+      "window_size_w": 3,
+      "stall_threshold_m": 2,
+      "reliability_persistence_n": 2,
+      "accuracy_threshold": 3.0,
+      "min_hint_level": 1,
+      "max_hint_level": 4,
+      "tutor_temp_min": 0.2,
+      "tutor_temp_max": 0.8,
+      "assistant_temp_min": 0.2,
+      "assistant_temp_max": 0.8,
+      "require_new_evidence_turns": 2,
+      "enabled": true
+    },
+    "escalation": {
+      "enabled": true,
+      "escalate_on_out_of_scope": true,
+      "escalate_on_malicious_intent": true,
+      "escalate_on_repeat_safety_flags": true
+    },
+    "reproducibility": {
+      "experiment_id": "mistake_memory_ablation_nomem_run_1",
+      "prompt_version": "2026-03-26",
+      "schema_version": "2026-03-26",
+      "code_version": "prototype-aligned-section3",
+      "save_manifest": true
+    },
+    "extra_prompt_constraints": []
+  },
+  "adaptation_event": null,
+  "human_escalation": null
+}

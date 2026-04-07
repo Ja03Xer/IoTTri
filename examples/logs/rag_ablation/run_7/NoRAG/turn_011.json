@@ -1,0 +1,964 @@
+{
+  "timestamp_utc": "2026-04-05T06:39:10.345906Z",
+  "task_descriptor": {
+    "task_id": "lab-web-001",
+    "scenario_identifier": "smart-camera web-interface misconfiguration",
+    "device_type": "smart_camera",
+    "scenario_summary": "Authorised IoT pentesting lab focused on weak authentication, unencrypted transport, and exposed web administration.",
+    "exposed_protocols_interfaces": [
+      "HTTP",
+      "MQTT"
+    ],
+    "allowed_tool_categories": [
+      "network scanner",
+      "HTTP client"
+    ],
+    "learning_objectives": [
+      {
+        "bloom_level": "Apply",
+        "objective": "Identify insecure configuration"
+      },
+      {
+        "bloom_level": "Analyze",
+        "objective": "Reason about trust boundaries"
+      },
+      {
+        "bloom_level": "Evaluate",
+        "objective": "Justify remediation"
+      }
+    ],
+    "ground_truth_artifacts": [
+      {
+        "name": "weak_auth",
+        "evidence_type": "evidence",
+        "description": "Weak or default credentials accepted"
+      },
+      {
+        "name": "no_https",
+        "evidence_type": "evidence",
+        "description": "Administrative interface uses unencrypted HTTP"
+      }
+    ],
+    "active_attack_surfaces": [
+      "device_web_interface",
+      "local_network_services"
+    ],
+    "laboratory_scope": "Authorised sandbox only",
+    "authorised_only": true
+  },
+  "learner_state_before": {
+    "turn_index": 11,
+    "phase": "vulnerability_analysis",
+    "hint_level": 1,
+    "recent_action_summary": "The device asks for credentials, so maybe authentication is enough protection.",
+    "confidence_indicators": [],
+    "evidence_markers": [
+      "login requirement observed"
+    ],
+    "progress_markers": [],
+    "retrieved_mistakes": [
+      {
+        "turn_index": 9,
+        "phase": "vulnerability_analysis",
+        "learner_query": "Is this enough evidence to conclude the device is secure?",
+        "recent_action_summary": "I think the device is safe because it has a login page.",
+        "attack_surfaces": [
+          "device_web_interface",
+          "local_network_services"
+        ],
+        "retrieved_context_titles": [],
+        "feedback_summary": "The learner demonstrates appropriate critical thinking and clear inquiry consistent with the reconnaissance phase and authorised lab scope but has yet to provide detailed findings or analysis regarding authentication strength or transport security.",
+        "improvement_guidance": "Encourage the learner to apply the tutor and assistant suggestions by investigating authentication strength and transport encryption on the login page, then report specific observations to deepen analysis and support subsequent reasoning.",
+        "accuracy_score": 3,
+        "timestamp_utc": "2026-04-05T06:38:30.715698Z",
+        "similarity_score": 0.8284357132352242
+      }
+    ]
+  },
+  "learner_state_after": {
+    "turn_index": 11,
+    "phase": "vulnerability_analysis",
+    "hint_level": 1,
+    "recent_action_summary": "The device asks for credentials, so maybe authentication is enough protection.",
+    "confidence_indicators": [],
+    "evidence_markers": [
+      "login requirement observed"
+    ],
+    "progress_markers": [],
+    "retrieved_mistakes": [
+      {
+        "turn_index": 9,
+        "phase": "vulnerability_analysis",
+        "learner_query": "Is this enough evidence to conclude the device is secure?",
+        "recent_action_summary": "I think the device is safe because it has a login page.",
+        "attack_surfaces": [
+          "device_web_interface",
+          "local_network_services"
+        ],
+        "retrieved_context_titles": [],
+        "feedback_summary": "The learner demonstrates appropriate critical thinking and clear inquiry consistent with the reconnaissance phase and authorised lab scope but has yet to provide detailed findings or analysis regarding authentication strength or transport security.",
+        "improvement_guidance": "Encourage the learner to apply the tutor and assistant suggestions by investigating authentication strength and transport encryption on the login page, then report specific observations to deepen analysis and support subsequent reasoning.",
+        "accuracy_score": 3,
+        "timestamp_utc": "2026-04-05T06:38:30.715698Z",
+        "similarity_score": 0.8284357132352242
+      }
+    ]
+  },
+  "learner_query": "What should I verify before assuming authentication is strong?",
+  "execution_log": "",
+  "moderation_result": {
+    "categories": {
+      "harassment": false,
+      "harassment_threatening": false,
+      "hate": false,
+      "hate_threatening": false,
+      "illicit": false,
+      "illicit_violent": false,
+      "self_harm": false,
+      "self_harm_instructions": false,
+      "self_harm_intent": false,
+      "sexual": false,
+      "sexual_minors": false,
+      "violence": false,
+      "violence_graphic": false,
+      "harassment/threatening": false,
+      "hate/threatening": false,
+      "illicit/violent": false,
+      "self-harm/intent": false,
+      "self-harm/instructions": false,
+      "self-harm": false,
+      "sexual/minors": false,
+      "violence/graphic": false
+    },
+    "category_applied_input_types": {
+      "harassment": [
+        "text"
+      ],
+      "harassment_threatening": [
+        "text"
+      ],
+      "hate": [
+        "text"
+      ],
+      "hate_threatening": [
+        "text"
+      ],
+      "illicit": [
+        "text"
+      ],
+      "illicit_violent": [
+        "text"
+      ],
+      "self_harm": [
+        "text"
+      ],
+      "self_harm_instructions": [
+        "text"
+      ],
+      "self_harm_intent": [
+        "text"
+      ],
+      "sexual": [
+        "text"
+      ],
+      "sexual_minors": [
+        "text"
+      ],
+      "violence": [
+        "text"
+      ],
+      "violence_graphic": [
+        "text"
+      ],
+      "harassment/threatening": [
+        "text"
+      ],
+      "hate/threatening": [
+        "text"
+      ],
+      "illicit/violent": [
+        "text"
+      ],
+      "self-harm/intent": [
+        "text"
+      ],
+      "self-harm/instructions": [
+        "text"
+      ],
+      "self-harm": [
+        "text"
+      ],
+      "sexual/minors": [
+        "text"
+      ],
+      "violence/graphic": [
+        "text"
+      ]
+    },
+    "category_scores": {
+      "harassment": 2.305067219931397e-05,
+      "harassment_threatening": 1.8925148246037342e-06,
+      "hate": 7.602479448313689e-06,
+      "hate_threatening": 2.8130174840733105e-07,
+      "illicit": 0.020151545065581276,
+      "illicit_violent": 1.6865275398914433e-05,
+      "self_harm": 5.829126566113866e-06,
+      "self_harm_instructions": 1.6187581436151335e-06,
+      "self_harm_intent": 3.2192334497037803e-06,
+      "sexual": 1.442598644847886e-05,
+      "sexual_minors": 6.205049602300744e-06,
+      "violence": 7.0311842669149565e-06,
+      "violence_graphic": 3.2192334497037803e-06,
+      "harassment/threatening": 1.8925148246037342e-06,
+      "hate/threatening": 2.8130174840733105e-07,
+      "illicit/violent": 1.6865275398914433e-05,
+      "self-harm/intent": 3.2192334497037803e-06,
+      "self-harm/instructions": 1.6187581436151335e-06,
+      "self-harm": 5.829126566113866e-06,
+      "sexual/minors": 6.205049602300744e-06,
+      "violence/graphic": 3.2192334497037803e-06
+    },
+    "flagged": false
+  },
+  "scope_result": {
+    "allow": true,
+    "reason": "",
+    "risk_markers": {
+      "real_world_targeting": false,
+      "payload_request": false,
+      "step_by_step_request": false
+    }
+  },
+  "retrieved_context": [],
+  "retrieved_mistakes": [
+    {
+      "turn_index": 9,
+      "phase": "vulnerability_analysis",
+      "learner_query": "Is this enough evidence to conclude the device is secure?",
+      "recent_action_summary": "I think the device is safe because it has a login page.",
+      "attack_surfaces": [
+        "device_web_interface",
+        "local_network_services"
+      ],
+      "retrieved_context_titles": [],
+      "feedback_summary": "The learner demonstrates appropriate critical thinking and clear inquiry consistent with the reconnaissance phase and authorised lab scope but has yet to provide detailed findings or analysis regarding authentication strength or transport security.",
+      "improvement_guidance": "Encourage the learner to apply the tutor and assistant suggestions by investigating authentication strength and transport encryption on the login page, then report specific observations to deepen analysis and support subsequent reasoning.",
+      "accuracy_score": 3,
+      "timestamp_utc": "2026-04-05T06:38:30.715698Z",
+      "similarity_score": 0.8284357132352242
+    }
+  ],
+  "interaction_history_used_by_evaluator": [
+    {
+      "turn_index": 1,
+      "learner_query": "What should I examine next in the authorised lab?",
+      "execution_log": "",
+      "retrieved_context": [],
+      "tutor_output": {
+        "hint": "Consider investigating whether the login page accepts default or weak credentials and if the communication with the web interface is encrypted or not.",
+        "rationale": "Weak or default authentication credentials are a common security issue in IoT devices, and unencrypted HTTP communication can expose sensitive data like passwords to interception. Identifying these weaknesses early helps in assessing the device's security posture.",
+        "check_question": "What steps can you take to determine if the login mechanism is secure and whether the communication channel protects the credentials during transmission?"
+      },
+      "assistant_output": {
+        "suggestion": "Next, verify whether the login page accepts weak or default credentials and check if the administrative interface uses unencrypted HTTP for authentication.",
+        "explanation": "Testing for weak credentials and lack of transport encryption directly addresses common misconfigurations in IoT device web interfaces that compromise security.",
+        "safety_note": "Ensure all testing is conducted within the authorised sandbox environment and avoid intrusive or disruptive actions."
+      },
+      "evaluator_output": {
+        "learner_evaluation": {
+          "criteria": [
+            {
+              "criterion": "Accuracy",
+              "score": 4,
+              "comment": "The learner's question is appropriate and aligned with the current reconnaissance phase, seeking guidance on next steps within the authorised lab scope.",
+              "recommendation": "Encourage the learner to apply the suggested investigative steps to gather concrete evidence."
+            },
+            {
+              "criterion": "Clarity",
+              "score": 5,
+              "comment": "The learner's submission is clear and unambiguous, explicitly asking what to examine next.",
+              "recommendation": "Maintain this clarity in future queries to facilitate precise guidance."
+            },
+            {
+              "criterion": "Completeness",
+              "score": 3,
+              "comment": "The learner's submission is a general question without specific findings or hypotheses, which limits completeness in demonstrating progress.",
+              "recommendation": "Prompt the learner to report observations or hypotheses alongside questions to enhance completeness."
+            },
+            {
+              "criterion": "Ethics",
+              "score": 5,
+              "comment": "The learner's request respects the authorised lab scope and does not indicate any unethical intent.",
+              "recommendation": "Continue adhering to authorised and ethical testing boundaries."
+            }
+          ],
+          "feedback_summary": "The learner demonstrates appropriate and clear inquiry consistent with the reconnaissance phase and authorised lab scope but has yet to provide detailed findings or analysis.",
+          "improvement_guidance": "Encourage the learner to perform the suggested checks for weak credentials and unencrypted communication, then report specific observations to deepen analysis and support subsequent reasoning.",
+          "bloom_level": "Apply"
+        },
+        "system_evaluation": {
+          "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance aligned with the task objectives and learner's current phase.",
+          "reliability_comment": "Guidance is grounded in the scenario's ground truth artifacts and educational goals, focusing on weak authentication and unencrypted transport vulnerabilities.",
+          "policy_compliance_comment": "The guidance remains within the authorised sandbox scope, emphasizing safe and ethical testing practices.",
+          "safety_flags": {
+            "unsafe_specificity": false,
+            "hallucination_risk": false,
+            "out_of_scope_request": false,
+            "malicious_intent_signal": false
+          }
+        }
+      }
+    },
+    {
+      "turn_index": 2,
+      "learner_query": "Which observations should I prioritise collecting next?",
+      "execution_log": "",
+      "retrieved_context": [],
+      "tutor_output": {
+        "hint": "Focus first on the web admin page since it directly controls the device and may reveal authentication or transport security details.",
+        "rationale": "The web administration interface is a primary attack surface where weak authentication or lack of encryption often appears, making it a critical starting point for identifying misconfigurations.",
+        "check_question": "What specific characteristics of the web admin page would help you assess whether authentication is weak or transport is unencrypted?"
+      },
+      "assistant_output": {
+        "suggestion": "Prioritize assessing whether the web admin page enforces strong authentication and uses encrypted transport, as these directly impact device security.",
+        "explanation": "Weak or default credentials and unencrypted HTTP are common misconfigurations that expose sensitive controls and data, making them critical to identify early in your analysis.",
+        "safety_note": "Perform only non-intrusive checks within the authorised lab environment, avoiding any disruptive actions on the device or network."
+      },
+      "evaluator_output": {
+        "learner_evaluation": {
+          "criteria": [
+            {
+              "criterion": "Accuracy",
+              "score": 4,
+              "comment": "The learner's question appropriately seeks guidance on prioritizing observations relevant to the reconnaissance phase and aligns with the authorised lab scope.",
+              "recommendation": "Encourage the learner to apply the tutor and assistant suggestions to focus on key evidence such as authentication and transport security."
+            },
+            {
+              "criterion": "Clarity",
+              "score": 5,
+              "comment": "The learner's submission is clear and straightforward, explicitly asking which observations to prioritize next.",
+              "recommendation": "Maintain this clarity in future submissions to facilitate effective guidance."
+            },
+            {
+              "criterion": "Completeness",
+              "score": 3,
+              "comment": "The learner's submission is a general inquiry without presenting specific findings or hypotheses, limiting demonstration of progress.",
+              "recommendation": "Prompt the learner to report concrete observations or hypotheses alongside questions to enhance completeness and support deeper analysis."
+            },
+            {
+              "criterion": "Ethics",
+              "score": 5,
+              "comment": "The learner's request respects the authorised lab boundaries and does not indicate any unethical intent.",
+              "recommendation": "Continue adhering to authorised and ethical testing practices."
+            }
+          ],
+          "feedback_summary": "The learner demonstrates appropriate and clear inquiry consistent with the reconnaissance phase and authorised lab scope but has yet to provide detailed findings or analysis.",
+          "improvement_guidance": "Encourage the learner to perform the suggested checks for weak or default credentials and unencrypted transport on the web admin page, then report specific observations to deepen analysis and support subsequent reasoning.",
+          "bloom_level": "Apply"
+        },
+        "system_evaluation": {
+          "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance aligned with the task objectives and the learner's current phase.",
+          "reliability_comment": "Guidance is grounded in the scenario's ground truth artifacts and educational goals, focusing on weak authentication and unencrypted transport vulnerabilities.",
+          "policy_compliance_comment": "The guidance remains within the authorised sandbox scope, emphasizing safe and ethical testing practices.",
+          "safety_flags": {
+            "unsafe_specificity": false,
+            "hallucination_risk": false,
+            "out_of_scope_request": false,
+            "malicious_intent_signal": false
+          }
+        }
+      }
+    },
+    {
+      "turn_index": 3,
+      "learner_query": "Why is the transport choice important before I make any security conclusion?",
+      "execution_log": "",
+      "retrieved_context": [],
+      "tutor_output": {
+        "hint": "Consider investigating whether the login credentials required by the web interface are strong or if default or weak passwords might be accepted.",
+        "rationale": "Even if you have noticed that the interface uses unencrypted HTTP, the authentication mechanism itself may also be weak if default or easily guessable credentials are allowed. This combination increases the risk of unauthorized access.",
+        "check_question": "What methods or observations could help you determine if the web interface accepts default or weak credentials?"
+      },
+      "assistant_output": {
+        "suggestion": "Assessing the transport choice is crucial because unencrypted HTTP exposes all transmitted data, including credentials, to interception or tampering within the local network.",
+        "explanation": "Without encryption (like HTTPS), attackers on the same network can eavesdrop on or modify data between the client and device, bypassing authentication protections even if credentials are strong.",
+        "safety_note": "Ensure all tests are confined to the authorised lab environment and avoid interacting with live networks or devices outside the scope."
+      },
+      "evaluator_output": {
+        "learner_evaluation": {
+          "criteria": [
+            {
+              "criterion": "Accuracy",
+              "score": 5,
+              "comment": "The learner's question correctly identifies the importance of transport security before drawing conclusions, showing understanding of the reconnaissance phase and security principles.",
+              "recommendation": "Encourage the learner to connect this understanding with concrete evidence gathering on authentication strength and transport encryption."
+            },
+            {
+              "criterion": "Clarity",
+              "score": 5,
+              "comment": "The learner's submission is clear and focused, explicitly asking why transport choice matters before concluding on security.",
+              "recommendation": "Maintain this clarity to facilitate precise and effective guidance."
+            },
+            {
+              "criterion": "Completeness",
+              "score": 4,
+              "comment": "The learner's question is insightful but does not yet include specific observations or hypotheses, limiting completeness in demonstrating progress.",
+              "recommendation": "Prompt the learner to combine such conceptual questions with concrete findings or reasoning to deepen analysis."
+            },
+            {
+              "criterion": "Ethics",
+              "score": 5,
+              "comment": "The learner's inquiry respects the authorised lab scope and ethical boundaries, showing no indication of unethical intent.",
+              "recommendation": "Continue to uphold ethical standards and authorised scope adherence."
+            }
+          ],
+          "feedback_summary": "The learner demonstrates accurate and clear understanding of the importance of transport security in the reconnaissance phase, aligned with authorised lab scope. However, the submission lacks specific evidence or detailed reasoning to fully demonstrate progress.",
+          "improvement_guidance": "Encourage the learner to perform the suggested investigations into authentication strength and transport encryption, then report specific observations and reason about their security implications to advance analysis and remediation justification.",
+          "bloom_level": "Analyze"
+        },
+        "system_evaluation": {
+          "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance that directly addresses the learner's question and aligns well with the task objectives and current phase.",
+          "reliability_comment": "Guidance is well grounded in the scenario's ground truth artifacts, focusing on weak authentication and unencrypted transport vulnerabilities, and supports safe, authorised testing.",
+          "policy_compliance_comment": "The guidance remains fully compliant with the authorised sandbox scope and emphasises ethical, safe testing practices.",
+          "safety_flags": {
+            "unsafe_specificity": false,
+            "hallucination_risk": false,
+            "out_of_scope_request": false,
+            "malicious_intent_signal": false
+          }
+        }
+      }
+    },
+    {
+      "turn_index": 4,
+      "learner_query": "What kinds of evidence would help me reason about weak authentication or insecure configuration?",
+      "execution_log": "",
+      "retrieved_context": [],
+      "tutor_output": {
+        "hint": "Consider investigating whether the settings page requires you to authenticate before access and if the authentication mechanism is strong or easily bypassed.",
+        "rationale": "Determining if access control is enforced on sensitive pages like settings is crucial to identifying insecure configurations such as weak or missing authentication.",
+        "check_question": "What steps can you take to verify if the settings page is protected by authentication controls?"
+      },
+      "assistant_output": {
+        "suggestion": "Look for evidence such as acceptance of default or simple credentials, absence of login prompts before accessing settings, and whether communication occurs over unencrypted HTTP without HTTPS.",
+        "explanation": "These indicators demonstrate weaknesses in authentication and transport security, which are common misconfigurations that can expose administrative controls to unauthorized access.",
+        "safety_note": "Conduct all checks passively or with minimal impact within the authorised lab environment, avoiding any intrusive or destructive actions."
+      },
+      "evaluator_output": {
+        "learner_evaluation": {
+          "criteria": [
+            {
+              "criterion": "Accuracy",
+              "score": 5,
+              "comment": "The learner's question is precise and relevant, seeking specific types of evidence to reason about weak authentication and insecure configuration, which aligns well with the reconnaissance phase and task objectives.",
+              "recommendation": "Encourage the learner to actively seek and document such evidence to support their analysis."
+            },
+            {
+              "criterion": "Clarity",
+              "score": 5,
+              "comment": "The learner's submission is clear and focused, explicitly asking what evidence would be helpful, facilitating targeted guidance.",
+              "recommendation": "Maintain this clarity in future inquiries to enable effective and precise support."
+            },
+            {
+              "criterion": "Completeness",
+              "score": 4,
+              "comment": "The learner's question is well-formed and relevant but does not yet include any findings or hypotheses, limiting demonstration of progress beyond inquiry.",
+              "recommendation": "Prompt the learner to combine such questions with specific observations or hypotheses to enhance completeness and analytical depth."
+            },
+            {
+              "criterion": "Ethics",
+              "score": 5,
+              "comment": "The learner's request respects the authorised lab scope and ethical boundaries, showing no indication of unethical intent.",
+              "recommendation": "Continue adhering to authorised and ethical testing practices."
+            }
+          ],
+          "feedback_summary": "The learner demonstrates accurate, clear, and ethically appropriate inquiry consistent with the reconnaissance phase and authorised lab scope. However, the submission lacks concrete evidence or detailed reasoning to fully demonstrate progress.",
+          "improvement_guidance": "Encourage the learner to perform the suggested investigations into authentication strength and transport encryption, then report specific observations and reason about their security implications to advance analysis and remediation justification.",
+          "bloom_level": "Apply"
+        },
+        "system_evaluation": {
+          "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance that directly addresses the learner's question and aligns well with the task objectives and current phase.",
+          "reliability_comment": "Guidance is well grounded in the scenario's ground truth artifacts, focusing on weak authentication and unencrypted transport vulnerabilities, and supports safe, authorised testing.",
+          "policy_compliance_comment": "The guidance remains fully compliant with the authorised sandbox scope and emphasises ethical, safe testing practices.",
+          "safety_flags": {
+            "unsafe_specificity": false,
+            "hallucination_risk": false,
+            "out_of_scope_request": false,
+            "malicious_intent_signal": false
+          }
+        }
+      }
+    },
+    {
+      "turn_index": 5,
+      "learner_query": "Is the existence of a login page itself a sign that security is good?",
+      "execution_log": "",
+      "retrieved_context": [],
+      "tutor_output": {
+        "hint": "Consider exploring the login page further to check if it enforces authentication properly and whether the communication is secured.",
+        "rationale": "Identifying whether the login mechanism requires strong credentials and if the data is transmitted securely helps reveal common misconfigurations like weak authentication or unencrypted transport.",
+        "check_question": "What observations or tests could help you determine if the login page uses strong authentication and secure communication?"
+      },
+      "assistant_output": {
+        "suggestion": "Do not assume that the mere presence of a login page indicates good security; investigate how authentication is implemented and whether any weaknesses exist.",
+        "explanation": "A login page is a basic security feature, but it can still be vulnerable if weak or default credentials are accepted or if authentication is not properly enforced. Evaluating the strength and enforcement of authentication is essential to identify insecure configurations.",
+        "safety_note": "Perform all checks within the authorised lab environment using non-intrusive methods to avoid impacting device operation."
+      },
+      "evaluator_output": {
+        "learner_evaluation": {
+          "criteria": [
+            {
+              "criterion": "Accuracy",
+              "score": 4,
+              "comment": "The learner's question correctly challenges the assumption that the mere presence of a login page indicates good security, showing appropriate critical thinking for the reconnaissance phase.",
+              "recommendation": "Encourage the learner to investigate the actual implementation details of authentication and transport security to gather concrete evidence."
+            },
+            {
+              "criterion": "Clarity",
+              "score": 5,
+              "comment": "The learner's submission is clear and unambiguous, explicitly questioning the security implications of a login page's existence.",
+              "recommendation": "Maintain this clarity in future submissions to facilitate precise guidance and effective communication."
+            },
+            {
+              "criterion": "Completeness",
+              "score": 3,
+              "comment": "The learner's submission is a conceptual question without presenting specific findings or hypotheses, limiting demonstration of progress in evidence collection or analysis.",
+              "recommendation": "Prompt the learner to perform the suggested investigations and report specific observations to enhance completeness and support deeper reasoning."
+            },
+            {
+              "criterion": "Ethics",
+              "score": 5,
+              "comment": "The learner's inquiry respects the authorised lab scope and ethical boundaries, showing no indication of unethical intent.",
+              "recommendation": "Continue adhering to authorised and ethical testing practices."
+            }
+          ],
+          "feedback_summary": "The learner demonstrates appropriate critical thinking and clear inquiry consistent with the reconnaissance phase and authorised lab scope but has yet to provide detailed findings or analysis.",
+          "improvement_guidance": "Encourage the learner to apply the tutor and assistant suggestions by investigating authentication strength and transport security on the login page, then report specific observations to deepen analysis and support subsequent reasoning.",
+          "bloom_level": "Apply"
+        },
+        "system_evaluation": {
+          "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance that directly addresses the learner's question and aligns well with the task objectives and current reconnaissance phase.",
+          "reliability_comment": "Guidance is well grounded in the scenario's ground truth artifacts, focusing on weak authentication and unencrypted transport vulnerabilities, and supports safe, authorised testing within the lab environment.",
+          "policy_compliance_comment": "The guidance remains fully compliant with the authorised sandbox scope and emphasises ethical, safe testing practices without encouraging intrusive or out-of-scope actions.",
+          "safety_flags": {
+            "unsafe_specificity": false,
+            "hallucination_risk": false,
+            "out_of_scope_request": false,
+            "malicious_intent_signal": false
+          }
+        }
+      }
+    },
+    {
+      "turn_index": 6,
+      "learner_query": "How should I distinguish between evidence, suspicion, and conclusion?",
+      "execution_log": "",
+      "retrieved_context": [],
+      "tutor_output": {
+        "hint": "Since you have confirmed the admin page is reachable, consider whether simply accessing the page implies a security risk, or if other factors like authentication and transport security affect the level of risk.",
+        "rationale": "Access to the admin page alone does not necessarily mean the system is insecure; understanding the protections around that page helps you reason about trust boundaries and the potential impact of misconfigurations.",
+        "check_question": "What additional information about the admin page's access controls and communication protocols would help you assess the security risk more accurately?"
+      },
+      "assistant_output": {
+        "suggestion": "Use evidence to mean verified facts you can observe or measure, suspicion as reasonable concerns arising from incomplete or indirect information, and conclusion as a justified judgment drawn after careful evaluation of all evidence and suspicion.",
+        "explanation": "Distinguishing these helps maintain clear reasoning: evidence grounds your analysis in reality, suspicion guides further investigation, and conclusions summarize your informed understanding without overreach.",
+        "safety_note": "Base all assessments strictly on data collected within the authorised lab environment and avoid assumptions beyond observed information to ensure accurate and ethical evaluation."
+      },
+      "evaluator_output": {
+        "learner_evaluation": {
+          "criteria": [
+            {
+              "criterion": "Accuracy",
+              "score": 5,
+              "comment": "The learner's question accurately seeks to clarify the conceptual distinctions between evidence, suspicion, and conclusion, which is essential for structured reasoning in the reconnaissance phase.",
+              "recommendation": "Encourage the learner to apply this conceptual understanding when gathering and analyzing data to support well-founded conclusions."
+            },
+            {
+              "criterion": "Clarity",
+              "score": 5,
+              "comment": "The learner's submission is clear, direct, and well-phrased, facilitating precise and relevant guidance.",
+              "recommendation": "Maintain this clarity in future inquiries to enable effective communication and targeted support."
+            },
+            {
+              "criterion": "Completeness",
+              "score": 4,
+              "comment": "The learner's question is conceptually complete but does not yet include specific findings or hypotheses, limiting demonstration of progress in evidence collection or analysis.",
+              "recommendation": "Prompt the learner to integrate this conceptual framework with concrete observations and reasoning in subsequent submissions to enhance completeness and analytical depth."
+            },
+            {
+              "criterion": "Ethics",
+              "score": 5,
+              "comment": "The learner's inquiry respects the authorised lab scope and ethical boundaries, showing no indication of unethical intent.",
+              "recommendation": "Continue adhering to authorised and ethical testing practices."
+            }
+          ],
+          "feedback_summary": "The learner demonstrates accurate, clear, and ethically appropriate inquiry that reflects a solid understanding of reasoning distinctions important for the reconnaissance phase. However, the submission lacks concrete evidence or detailed reasoning to fully demonstrate progress.",
+          "improvement_guidance": "Encourage the learner to apply the distinctions between evidence, suspicion, and conclusion when performing investigations into authentication strength and transport security, then report specific observations and reason about their security implications to advance analysis and remediation justification.",
+          "bloom_level": "Analyze"
+        },
+        "system_evaluation": {
+          "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance that directly addresses the learner's conceptual question and aligns well with the task objectives and current reconnaissance phase.",
+          "reliability_comment": "Guidance is well grounded in the scenario's ground truth artifacts, focusing on weak authentication and unencrypted transport vulnerabilities, and supports safe, authorised testing within the lab environment.",
+          "policy_compliance_comment": "The guidance remains fully compliant with the authorised sandbox scope and emphasises ethical, safe testing practices without encouraging intrusive or out-of-scope actions.",
+          "safety_flags": {
+            "unsafe_specificity": false,
+            "hallucination_risk": false,
+            "out_of_scope_request": false,
+            "malicious_intent_signal": false
+          }
+        }
+      }
+    },
+    {
+      "turn_index": 7,
+      "learner_query": "What does this suggest about the device security?",
+      "execution_log": "",
+      "retrieved_context": [],
+      "tutor_output": {
+        "hint": "Consider exploring whether the login credentials accepted by the web interface are strong or if default or commonly used weak passwords might work.",
+        "rationale": "Weak or default credentials are a frequent security misconfiguration in IoT devices and can allow unauthorized access even if the interface is accessible only on HTTP.",
+        "check_question": "What methods or tests could you use to determine if the login mechanism accepts weak or default credentials?"
+      },
+      "assistant_output": {
+        "suggestion": "This suggests that the device's administrative interface lacks transport encryption, making credentials vulnerable to interception.",
+        "explanation": "Using unencrypted HTTP for login means authentication data can be captured by attackers on the same network, compromising device security and trust boundaries.",
+        "safety_note": "Continue testing only within the authorised lab environment and avoid attempting real network interception outside this scope."
+      },
+      "evaluator_output": {
+        "learner_evaluation": {
+          "criteria": [
+            {
+              "criterion": "Accuracy",
+              "score": 5,
+              "comment": "The learner's question appropriately seeks to interpret the security implications of the observed HTTP login page, showing understanding of the reconnaissance phase and security principles.",
+              "recommendation": "Encourage the learner to connect this understanding with concrete evidence gathering on authentication strength and transport encryption."
+            },
+            {
+              "criterion": "Clarity",
+              "score": 5,
+              "comment": "The learner's submission is clear and focused, explicitly asking what the HTTP login page suggests about device security.",
+              "recommendation": "Maintain this clarity to facilitate precise and effective guidance."
+            },
+            {
+              "criterion": "Completeness",
+              "score": 3,
+              "comment": "The learner's submission is a conceptual question without presenting specific findings or hypotheses, limiting demonstration of progress in evidence collection or analysis.",
+              "recommendation": "Prompt the learner to perform the suggested investigations into authentication strength and transport encryption, then report specific observations to enhance completeness and support deeper reasoning."
+            },
+            {
+              "criterion": "Ethics",
+              "score": 5,
+              "comment": "The learner's inquiry respects the authorised lab scope and ethical boundaries, showing no indication of unethical intent.",
+              "recommendation": "Continue adhering to authorised and ethical testing practices."
+            }
+          ],
+          "feedback_summary": "The learner demonstrates appropriate and clear inquiry consistent with the reconnaissance phase and authorised lab scope but has yet to provide detailed findings or analysis regarding the security implications of the HTTP login page.",
+          "improvement_guidance": "Encourage the learner to apply the tutor and assistant suggestions by investigating whether weak or default credentials are accepted and confirming the lack of transport encryption, then report specific observations to deepen analysis and support subsequent reasoning.",
+          "bloom_level": "Analyze"
+        },
+        "system_evaluation": {
+          "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance that directly addresses the learner's question and aligns well with the task objectives and current reconnaissance phase.",
+          "reliability_comment": "Guidance is well grounded in the scenario's ground truth artifacts, focusing on weak authentication and unencrypted transport vulnerabilities, and supports safe, authorised testing within the lab environment.",
+          "policy_compliance_comment": "The guidance remains fully compliant with the authorised sandbox scope and emphasises ethical, safe testing practices without encouraging intrusive or out-of-scope actions.",
+          "safety_flags": {
+            "unsafe_specificity": false,
+            "hallucination_risk": false,
+            "out_of_scope_request": false,
+            "malicious_intent_signal": false
+          }
+        }
+      }
+    },
+    {
+      "turn_index": 8,
+      "learner_query": "How should I justify this finding in a report?",
+      "execution_log": "",
+      "retrieved_context": [],
+      "tutor_output": {
+        "hint": "Consider confirming whether the device accepts default or weak credentials by attempting to log in with common username and password pairs over the HTTP interface.",
+        "rationale": "Since you've identified that the interface lacks HTTPS, verifying if weak or default credentials are accepted will help establish the extent of the authentication weakness and the risk posed by unencrypted transmission of credentials.",
+        "check_question": "What tests can you perform to verify if the device allows access using default or easily guessable credentials?"
+      },
+      "assistant_output": {
+        "suggestion": "Explain that the use of unencrypted HTTP exposes credentials and session data to interception on the local network, compromising device security and user privacy.",
+        "explanation": "Unencrypted transport means authentication data can be captured by attackers within the same network, violating trust boundaries and enabling unauthorized access. This weakness directly impacts the confidentiality and integrity of device management.",
+        "safety_note": "Ensure all findings and tests remain confined to the authorised lab environment and avoid attempting real-world attacks outside this scope."
+      },
+      "evaluator_output": {
+        "learner_evaluation": {
+          "criteria": [
+            {
+              "criterion": "Accuracy",
+              "score": 5,
+              "comment": "The learner's question appropriately seeks guidance on how to justify findings in a report, demonstrating understanding of the need to connect evidence to remediation justification within the authorised lab scope.",
+              "recommendation": "Encourage the learner to integrate concrete evidence and reasoning in their report to effectively justify security findings."
+            },
+            {
+              "criterion": "Clarity",
+              "score": 5,
+              "comment": "The learner's submission is clear and direct, explicitly asking for advice on report justification, facilitating precise and relevant guidance.",
+              "recommendation": "Maintain this clarity in future submissions to ensure effective communication and targeted support."
+            },
+            {
+              "criterion": "Completeness",
+              "score": 3,
+              "comment": "The learner's submission is a general question without presenting specific findings or a draft justification, limiting demonstration of progress in analysis or reporting.",
+              "recommendation": "Prompt the learner to draft a justification based on collected evidence and reasoning to enhance completeness and demonstrate applied understanding."
+            },
+            {
+              "criterion": "Ethics",
+              "score": 5,
+              "comment": "The learner's request respects the authorised lab scope and ethical boundaries, showing no indication of unethical intent.",
+              "recommendation": "Continue adhering to authorised and ethical testing practices."
+            }
+          ],
+          "feedback_summary": "The learner demonstrates clear and accurate inquiry consistent with the authorised lab scope and reconnaissance phase, seeking to understand how to justify findings in a report. However, the submission lacks specific evidence or a draft justification to fully demonstrate progress in analysis and reporting.",
+          "improvement_guidance": "Encourage the learner to apply the tutor and assistant suggestions by gathering concrete evidence on weak authentication and unencrypted transport, then draft a reasoned justification linking these findings to security risks and remediation recommendations in their report.",
+          "bloom_level": "Evaluate"
+        },
+        "system_evaluation": {
+          "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance that aligns well with the learner's request for report justification advice and the task objectives.",
+          "reliability_comment": "Guidance is well grounded in the scenario's ground truth artifacts, focusing on weak authentication and unencrypted transport vulnerabilities, and supports safe, authorised testing and reporting within the lab environment.",
+          "policy_compliance_comment": "The guidance remains fully compliant with the authorised sandbox scope and emphasises ethical, safe testing and reporting practices without encouraging intrusive or out-of-scope actions.",
+          "safety_flags": {
+            "unsafe_specificity": false,
+            "hallucination_risk": false,
+            "out_of_scope_request": false,
+            "malicious_intent_signal": false
+          }
+        }
+      }
+    },
+    {
+      "turn_index": 9,
+      "learner_query": "Is this enough evidence to conclude the device is secure?",
+      "execution_log": "",
+      "retrieved_context": [],
+      "tutor_output": {
+        "hint": "Consider that having a login page alone does not guarantee strong security. Reflect on whether the login mechanism enforces strong authentication and if the communication channel protects credential confidentiality.",
+        "rationale": "A login page is a necessary security feature but can still be vulnerable if it accepts weak or default credentials or transmits data without encryption. Attackers often exploit these weaknesses to gain unauthorized access.",
+        "check_question": "What information would help you determine if the login process is both strong and securely transmitted over the network?"
+      },
+      "assistant_output": {
+        "suggestion": "No, the presence of a login page alone does not guarantee the device is secure. You should verify whether the authentication is strong and whether the transport layer protects credentials.",
+        "explanation": "A login page is only a partial measure; weak or default credentials and unencrypted HTTP can still expose the device to compromise. Effective security requires strong authentication and encrypted communication.",
+        "safety_note": "Continue testing within the authorised lab environment, focusing on low-impact verification of authentication strength and transport security without attempting intrusive attacks."
+      },
+      "evaluator_output": {
+        "learner_evaluation": {
+          "criteria": [
+            {
+              "criterion": "Accuracy",
+              "score": 3,
+              "comment": "The learner's question is appropriate in context, seeking to confirm if the presence of a login page alone suffices to conclude device security. However, it lacks demonstration of concrete evidence or reasoning about authentication strength or transport security.",
+              "recommendation": "Encourage the learner to investigate and report specific findings regarding authentication mechanisms and transport encryption before drawing conclusions."
+            },
+            {
+              "criterion": "Clarity",
+              "score": 5,
+              "comment": "The learner's submission is clear and unambiguous, explicitly asking whether the login page alone is sufficient evidence of security.",
+              "recommendation": "Maintain this clarity in future submissions to facilitate precise guidance and effective communication."
+            },
+            {
+              "criterion": "Completeness",
+              "score": 2,
+              "comment": "The submission is a conceptual question without any supporting evidence, observations, or hypotheses, limiting demonstration of progress in vulnerability analysis.",
+              "recommendation": "Prompt the learner to perform the suggested investigations and report specific observations or hypotheses to enhance completeness and support deeper analysis."
+            },
+            {
+              "criterion": "Ethics",
+              "score": 5,
+              "comment": "The learner's inquiry respects the authorised lab scope and ethical boundaries, showing no indication of unethical intent.",
+              "recommendation": "Continue adhering to authorised and ethical testing practices."
+            }
+          ],
+          "feedback_summary": "The learner demonstrates appropriate critical thinking and clear inquiry consistent with the reconnaissance phase and authorised lab scope but has yet to provide detailed findings or analysis regarding authentication strength or transport security.",
+          "improvement_guidance": "Encourage the learner to apply the tutor and assistant suggestions by investigating authentication strength and transport encryption on the login page, then report specific observations to deepen analysis and support subsequent reasoning.",
+          "bloom_level": "Apply"
+        },
+        "system_evaluation": {
+          "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance that directly addresses the learner's question and aligns well with the task objectives and current reconnaissance phase.",
+          "reliability_comment": "Guidance is well grounded in the scenario's ground truth artifacts, focusing on weak authentication and unencrypted transport vulnerabilities, and supports safe, authorised testing within the lab environment.",
+          "policy_compliance_comment": "The guidance remains fully compliant with the authorised sandbox scope and emphasises ethical, safe testing practices without encouraging intrusive or out-of-scope actions.",
+          "safety_flags": {
+            "unsafe_specificity": false,
+            "hallucination_risk": false,
+            "out_of_scope_request": false,
+            "malicious_intent_signal": false
+          }
+        }
+      }
+    },
+    {
+      "turn_index": 10,
+      "learner_query": "How can I explain the trust-boundary impact clearly?",
+      "execution_log": "",
+      "retrieved_context": [],
+      "tutor_output": {
+        "hint": "Now that you have identified weak authentication and unencrypted transport, consider how these issues impact the overall security posture of the device and what specific risks they introduce.",
+        "rationale": "Understanding the implications of weak authentication and lack of encryption helps you to evaluate the trust boundaries and justify remediation steps effectively in your report.",
+        "check_question": "How do weak authentication and unencrypted HTTP affect the confidentiality, integrity, and trustworthiness of the smart camera's web administration interface?"
+      },
+      "assistant_output": {
+        "suggestion": "Explain that the trust boundary is weakened because sensitive authentication data crosses from the user to the device over unencrypted HTTP, allowing interception or tampering within the local network.",
+        "explanation": "Without encryption, credentials and session information are exposed to anyone on the same network, undermining the trust placed in the device's access controls. Weak authentication further reduces the barrier, increasing risk of unauthorized access.",
+        "safety_note": "Ensure explanations and testing remain within the authorised lab environment and avoid attempting any unauthorized network interception or exploitation beyond controlled scenarios."
+      },
+      "evaluator_output": {
+        "learner_evaluation": {
+          "criteria": [
+            {
+              "criterion": "Accuracy",
+              "score": 4,
+              "comment": "The learner's question seeks guidance on how to clearly explain the trust-boundary impact, showing appropriate understanding of the need to reason about security implications in the reporting phase.",
+              "recommendation": "Encourage the learner to integrate specific evidence about weak authentication and unencrypted transport to support their explanation."
+            },
+            {
+              "criterion": "Clarity",
+              "score": 5,
+              "comment": "The learner's submission is clear and focused, explicitly asking how to explain the trust-boundary impact clearly.",
+              "recommendation": "Maintain this clarity to facilitate precise and effective guidance."
+            },
+            {
+              "criterion": "Completeness",
+              "score": 3,
+              "comment": "The learner's submission is a conceptual question without presenting specific findings or a draft explanation, limiting demonstration of progress in reporting and analysis.",
+              "recommendation": "Prompt the learner to draft an explanation incorporating concrete observations and reasoning about trust boundaries to enhance completeness."
+            },
+            {
+              "criterion": "Ethics",
+              "score": 5,
+              "comment": "The learner's inquiry respects the authorised lab scope and ethical boundaries, showing no indication of unethical intent.",
+              "recommendation": "Continue adhering to authorised and ethical testing practices."
+            }
+          ],
+          "feedback_summary": "The learner demonstrates clear and relevant inquiry consistent with the reporting phase and authorised lab scope but has yet to provide a detailed explanation or analysis of the trust-boundary impact.",
+          "improvement_guidance": "Encourage the learner to apply the tutor and assistant suggestions by drafting a clear explanation that links weak authentication and unencrypted transport to trust boundary weakening, supported by specific evidence from their findings.",
+          "bloom_level": "Analyze"
+        },
+        "system_evaluation": {
+          "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance that directly addresses the learner's question about explaining trust boundaries, aligning well with the task objectives and current reporting phase.",
+          "reliability_comment": "Guidance is well grounded in the scenario's ground truth artifacts, focusing on weak authentication and unencrypted transport vulnerabilities, and supports safe, authorised testing and reporting within the lab environment.",
+          "policy_compliance_comment": "The guidance remains fully compliant with the authorised sandbox scope and emphasises ethical, safe testing and reporting practices without encouraging intrusive or out-of-scope actions.",
+          "safety_flags": {
+            "unsafe_specificity": false,
+            "hallucination_risk": false,
+            "out_of_scope_request": false,
+            "malicious_intent_signal": false
+          }
+        }
+      }
+    }
+  ],
+  "tutor_output": {
+    "hint": "Consider investigating whether the authentication mechanism enforces strong credentials and whether the login process is protected by encryption.",
+    "rationale": "Having a login page alone does not guarantee security; weak or default credentials can still grant unauthorized access, and if the login data is transmitted over unencrypted HTTP, it can be intercepted by attackers on the local network.",
+    "check_question": "What specific indicators would help you determine if the authentication is strong and if the login communication is secure?"
+  },
+  "assistant_output": {
+    "suggestion": "Verify whether the login page accepts default or weak credentials and whether the authentication mechanism enforces account lockout or rate limiting.",
+    "explanation": "A login page alone does not guarantee strong authentication; testing for weak or default credentials and protections against brute force attacks helps identify authentication weaknesses.",
+    "safety_note": "Perform only non-intrusive checks within the authorised lab environment and avoid repeated login attempts that could disrupt the device."
+  },
+  "evaluator_output": {
+    "learner_evaluation": {
+      "criteria": [
+        {
+          "criterion": "Accuracy",
+          "score": 5,
+          "comment": "The learner's question appropriately seeks to identify what should be verified before assuming authentication is strong, demonstrating accurate understanding of the need to validate security assumptions in the vulnerability analysis phase.",
+          "recommendation": "Encourage the learner to investigate specific authentication mechanisms such as credential strength, account lockout policies, and transport encryption to gather concrete evidence."
+        },
+        {
+          "criterion": "Clarity",
+          "score": 5,
+          "comment": "The learner's submission is clear and focused, explicitly asking what to verify regarding authentication strength, facilitating precise and actionable guidance.",
+          "recommendation": "Maintain this clarity in future submissions to support effective communication and targeted feedback."
+        },
+        {
+          "criterion": "Completeness",
+          "score": 3,
+          "comment": "The learner's question is relevant and well-formed but remains a general inquiry without presenting specific findings, hypotheses, or evidence, limiting demonstration of progress in vulnerability analysis.",
+          "recommendation": "Prompt the learner to combine such questions with concrete observations or test results to enhance completeness and support deeper analysis."
+        },
+        {
+          "criterion": "Ethics",
+          "score": 5,
+          "comment": "The learner's inquiry respects the authorised lab scope and ethical boundaries, showing no indication of unethical intent or out-of-scope requests.",
+          "recommendation": "Continue adhering to authorised and ethical testing practices."
+        }
+      ],
+      "feedback_summary": "The learner demonstrates accurate and clear inquiry consistent with the vulnerability analysis phase and authorised lab scope. However, the submission lacks specific evidence or detailed reasoning to fully demonstrate progress in identifying insecure configurations.",
+      "improvement_guidance": "Encourage the learner to apply the tutor and assistant suggestions by investigating whether the authentication mechanism enforces strong credentials, account lockout or rate limiting, and whether the login communication is encrypted. Then, report specific observations to deepen analysis and support subsequent reasoning.",
+      "bloom_level": "Apply"
+    },
+    "system_evaluation": {
+      "guidance_quality_summary": "The tutor and assistant outputs provide relevant, clear, and actionable guidance that directly addresses the learner's question about verifying authentication strength, aligning well with the task objectives and current vulnerability analysis phase.",
+      "reliability_comment": "Guidance is well grounded in the scenario's ground truth artifacts, focusing on weak authentication and unencrypted transport vulnerabilities, and supports safe, authorised testing within the lab environment.",
+      "policy_compliance_comment": "The guidance remains fully compliant with the authorised sandbox scope and emphasises ethical, safe testing practices without encouraging intrusive or out-of-scope actions.",
+      "safety_flags": {
+        "unsafe_specificity": false,
+        "hallucination_risk": false,
+        "out_of_scope_request": false,
+        "malicious_intent_signal": false
+      }
+    }
+  },
+  "config_snapshot": {
+    "safety": {
+      "laboratory_only": true,
+      "require_authorised_scope": true,
+      "prohibit_step_by_step_exploitation": true,
+      "require_evidence_verification_on_risk": true,
+      "allow_human_escalation": true,
+      "block_real_world_targeting": true,
+      "block_payload_generation": true,
+      "immutable": true
+    },
+    "retrieval": {
+      "embedding_model": "text-embedding-3-small",
+      "top_k": 4,
+      "max_top_k": 8,
+      "min_score": 0.2,
+      "attack_surface_strict_filter": true,
+      "objective_conditioning_weight": 0.2,
+      "enable_objective_conditioning": true
+    },
+    "modules": {
+      "model": "gpt-4.1-mini",
+      "tutor_temperature": 0.5,
+      "assistant_temperature": 0.7,
+      "evaluator_temperature": 0.0
+    },
+    "adaptation": {
+      "window_size_w": 3,
+      "stall_threshold_m": 2,
+      "reliability_persistence_n": 2,
+      "accuracy_threshold": 3.0,
+      "min_hint_level": 1,
+      "max_hint_level": 4,
+      "tutor_temp_min": 0.2,
+      "tutor_temp_max": 0.8,
+      "assistant_temp_min": 0.2,
+      "assistant_temp_max": 0.8,
+      "require_new_evidence_turns": 2,
+      "enabled": true
+    },
+    "escalation": {
+      "enabled": true,
+      "escalate_on_out_of_scope": true,
+      "escalate_on_malicious_intent": true,
+      "escalate_on_repeat_safety_flags": true
+    },
+    "reproducibility": {
+      "experiment_id": "rag_ablation_norag_run_7",
+      "prompt_version": "2026-03-26",
+      "schema_version": "2026-03-26",
+      "code_version": "prototype-aligned-section3",
+      "save_manifest": true
+    },
+    "extra_prompt_constraints": []
+  },
+  "adaptation_event": null,
+  "human_escalation": null
+}
